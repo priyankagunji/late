@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="098df926-c0c4-4f7a-ab6e-a7799df41ca2" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="loadstatic_2Flow" doc:id="2f8187c7-1d82-4338-ad44-7f2fc03e49af" >
+		<http:listener doc:name="Listener" doc:id="f000a6e6-c3d5-4e8a-9265-d4fb79d588f5" config-ref="HTTP_Listener_config" path="/load2"/>
+		<http:load-static-resource doc:name="Load static resource" doc:id="581514e7-0cc6-44fa-bf0e-7a6384fba723" defaultFile="new1.html" resourceBasePath="C:/AnypointStudio/studio-workspace/loadstatic_2/src/main/resources/new1.html"/>
+		<logger level="INFO" doc:name="Logger" doc:id="f9c9894a-b177-406d-85ad-083d2fee62d4" message="#[payload]"/>
+	</flow>
+</mule>
